@@ -1,0 +1,513 @@
+$color-white: #FFF;
+$color-dark: #2A263D;
+$color-violet: #464069;
+$color-primary: #FFBC6B;
+$color-danger: #B8121A;
+
+$base: 16px;
+
+@function rem($size) {
+  @return $size / $base * 1rem;
+}
+
+@mixin css ($property, $value) {
+    #{$property}: rem($value);
+}
+
+*,
+*:before,
+*:after {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: $color-white;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    min-width: 1920px;
+}
+
+.title {
+    font-family: 'Playfair Display', serif;
+    color: $color-primary;
+}
+
+.title-secondary {   
+    @include css(font-size, 24px);
+}
+
+.button--primary,
+.button--secondary,
+.button {
+    display: inline-block;
+    background: transparent;
+}
+.button--primary {
+    border: 3px solid $color-white;
+    text-align: center;
+    @include css(width, 176px);
+    @include css(padding, 8px);
+    transition: all .3s;
+
+    &:hover {
+        background: $color-violet;
+        box-shadow: inset 0px 0px 10px 0px $color-dark;
+        transform: scale(1.01);
+    }
+}
+
+.button--secondary {
+    border: 2px solid $color-danger;
+    @include css(width, 177px);
+    @include css(height, 80px);
+    padding-top: 1.1rem;
+
+    span {
+        position: relative;
+        background: $color-white;
+        color: $color-danger;
+        font-weight: 700;
+        font-family: 'Playfair Display', serif;
+        @include css(font-size, 20px);
+        text-transform: capitalize;
+        @include css(margin-left, -32px);
+        transition: all .3s;
+
+        &:before {
+            position: absolute;
+            width: 35%;
+            height: 60%;
+            left: 50%;
+            @include css(bottom, -20px);
+            transform: translate(-50%);
+            content: '';
+            background: url('../img/arrow.svg') no-repeat;
+        }
+    }
+
+    &:hover {
+        span {
+            @include css(margin-left, 25px);
+        }
+    }
+}
+
+.button {
+    text-align: center;
+    border: 2px solid $color-primary;
+    color: $color-primary;
+    text-transform: uppercase;
+    @include css(width, 344px);
+    @include css(height, 47px);
+    @include css(line-height, 47px);
+    transition: all .3s;
+
+    &:hover {
+        transform: scale(1.01);
+    }
+}
+
+
+.registration {
+    display: flex;
+
+    button {
+        @include css(width, 112px);
+        @include css(height, 46px);
+        text-transform: capitalize;
+        transition: transform .3s;
+
+        &:first-child {
+            color: $color-white;
+            background: $color-danger;
+        }
+
+        &:last-child {
+            color: $color-danger;
+            background: transparent;
+            border: 1px solid $color-danger
+        }
+
+        &:hover {
+                transform: scale(1.05);
+            }
+
+    }
+}
+
+.social {
+    &__links {
+        display: flex;
+    }
+
+    &__item {
+        a {
+            display: inline-block;
+            @include css(width, 20px);
+            @include css(height, 20px);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        &:not(:last-child) {
+            @include css(margin-right, 22px);
+        }
+
+        &:nth-child(1) {
+            a {
+                background-image: url('../img/icon-facebook.svg')
+            }
+        }
+
+        &:nth-child(2) {
+            a {
+                background-image: url('../img/icon-twitter.svg')
+            }
+        }
+
+        &:nth-child(3) {
+            a {
+                background-image: url('../img/icon-linkedin.svg')
+            }
+        }
+
+        &:nth-child(4) {
+            a {
+                background-image: url('../img/icon-instagram.svg')
+            }
+        }
+
+        &:nth-child(5) {
+            a {
+                background-image: url('../img/icon-googleplus.svg')
+            }
+        }
+    }
+}
+
+
+.header {
+    @include css(height, 454px);
+    background: url('../img/header-bg.svg') no-repeat 50% -12%;
+    background-size: 100%;
+
+    .container {
+        position: relative;
+        display: flex;
+        width: 100%;
+        padding: 3.5rem 1.5rem;
+    }
+
+    .wrapper {
+        position: relative;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .nav {
+            @include css(margin-bottom, 112px);
+        }
+    }
+
+    &__logo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 20%;
+    }
+
+    &__promo {
+        text-align: center;
+
+        span {
+            color: $color-white;
+        }
+    }
+
+    &__title {
+        @include css(font-size, 50px);
+        font-weight: 400;
+        @include css(margin-bottom, 46px);
+    }
+
+    &__comunication {
+        position: absolute;
+        @include css(right, 86px);
+
+        .registration {
+            margin: 0 0.75rem 2.625rem 0.75rem;
+        }
+    }
+}
+
+.map {
+    position: relative;
+
+    .logo {
+        position: absolute;
+        top: -12%;;
+        @include css(right, 120px);
+        z-index: 5;
+        transition: all .2s;
+
+        &:hover {
+            transform: rotate(45deg);
+        }
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .container {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        bottom: -23%;
+        @include css(height, 352px);
+        width: 100%;
+        background: url('../img/map-bg.svg') no-repeat;
+        background-size: 100%;
+        text-align: center;
+        z-index: 5;
+    }
+
+    &__title {
+        @include css(font-size, 48px);
+        @include css(margin-bottom, 30px);
+
+        &:after {
+                color: $color-white;
+        }
+    }
+}
+
+.info {
+    &__header {
+        text-align: center;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(180deg, #464069 0%, rgba(118, 107, 175, 0) 37.79%);
+        background-size: 100% 270%;
+        @include css(height, 416px);
+
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            @include css(left, 57px);
+            z-index: 10;
+        }
+    }
+
+    .container {
+        margin-top: auto;
+    }
+
+    &__quote,
+    &__caption {
+        color: $color-violet;
+        font-family: 'Playfair Display', serif;
+        font-weight: 400;
+    }
+
+    &__quote {
+        @include css(font-size, 50px);
+        line-height: 1;
+    }
+
+    &__caption {
+        display: block;
+        @include css(font-size, 24px);
+        @include css(margin-bottom, 56px);
+        text-align: right;
+    }
+
+    &__main {
+        display: flex;
+        @include css(padding, 16px);
+    }
+
+    &__column {
+        &:not(:last-child) {
+            width: 45%;
+            @include css(padding-top, 72px);
+            @include css(padding-left, 172px);
+        }
+
+        .title-secondary {
+            color: $color-dark;
+            @include css(margin-bottom, 72px);
+
+            &:after {
+                color: $color-danger;
+            }
+        }
+
+        table {
+            text-align: left;
+
+            th {
+                color: $color-danger;
+                font-family: 'Playfair Display', serif;
+                @include css(font-size, 20px);
+                @include css(padding-bottom, 54px);
+                text-transform: uppercase;
+            }
+
+            tr {
+                td {
+                    color: $color-violet;
+                    @include css(font-size, 18px);
+                    vertical-align: top;
+                    @include css(padding-bottom, 16px);
+
+                    &:first-child {
+                        width: 30%;
+                    }
+
+                    &:last-child {
+                        font-weight: 500;
+                    }
+                }
+            }
+        }
+
+        .wrapper {
+            position: relative;
+            @include css(min-height, 214px);
+
+            img {
+                position: absolute;
+                width: 100%;
+                top: 0;
+                @include css(left, -240px);
+            }
+            &:after {
+                content: '';
+                display: block;
+                clear: both;
+            }
+            .button--secondary {
+                float: right;
+            }
+        }
+
+        .medals {
+            @include css(margin-top, 20px);
+        }
+    }
+}
+
+.benefits {
+    color: $color-white;
+    background: url('../img/benefits-bg.png');
+    @include css(height, 1654px);
+    @include css(margin-top, -85px);
+
+    &__column {
+        background: url('../img/benefits-bg-2.png') no-repeat;
+        background-position: 0 1rem;
+        height: 100%;
+        @include css(padding-top, 170px);
+
+        &:first-child {
+            @include css(padding-left, 127px);
+        }
+
+        .title-secondary {
+            color: $color-primary;
+            @include css(margin-bottom, 235px);
+            @include css(margin-left, 52px);
+
+            &:after {
+                color: $color-white;
+            }
+        }
+
+        span {
+            color: $color-primary;
+            display: inline-block;
+            font-family: 'Playfair Display', serif;
+            @include css(font-size, 18px);
+            @include css(margin-bottom, 27px);
+        }
+
+        p {
+            @include css(font-size, 18px);
+            @include css(margin-bottom, 32px);
+            @include css(max-width, 540px);
+        }
+    }
+}
+
+.medals {
+    display: flex;
+    clear: both;
+
+    &__item {
+        &:not(:first-child) {
+            @include css(margin-left, -16px);
+        }
+    }
+}
+
+.nav {
+    &__menu {
+        display: flex;
+    }
+
+    &__item {
+        &:not(:last-child) {
+            @include css(margin-right, 27px);
+        }
+        a {
+            color: $color-dark;
+            text-transform: uppercase;
+            @include css(font-size, 20px);
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            transition: all .3s;
+
+            &:hover {
+                color: $color-primary;
+            }
+        }
+
+        &--active {
+            a {
+                color: $color-primary;
+                text-shadow: none;
+
+                &:after {
+                    color: $color-dark;
+                }
+            }
+        }
+    }
+}
+
+.nav__item--active,
+.map__title,
+.title-secondary {
+    &:after {
+        content: '.';
+        @include css(margin-left, 5px);
+    }
+}
